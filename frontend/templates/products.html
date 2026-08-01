@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products - DokanDar{% endblock %}
+{% block content %}
+<h2>Browse Products</h2>
+
+<div class="filters-bar card">
+  <div class="field">
+    <label>Search</label>
+    <input type="text" id="f-search" placeholder="Product name...">
+  </div>
+  <div class="field">
+    <label>Category</label>
+    <select id="f-category"><option value="">All</option></select>
+  </div>
+  <div class="field">
+    <label>Min price</label>
+    <input type="number" id="f-min-price" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label>Max price</label>
+    <input type="number" id="f-max-price" min="0" step="0.01">
+  </div>
+  <div class="field">
+    <label>Min rating</label>
+    <select id="f-min-rating">
+      <option value="">Any</option>
+      <option value="4">4★ & up</option>
+      <option value="3">3★ & up</option>
+      <option value="2">2★ & up</option>
+      <option value="1">1★ & up</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Sort by</label>
+    <select id="f-sort">
+      <option value="newest">Newest</option>
+      <option value="price_asc">Price: Low to High</option>
+      <option value="price_desc">Price: High to Low</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+  <button class="btn" id="apply-filters">Apply</button>
+</div>
+
+<div id="product-grid" class="grid"></div>
+<div id="pagination" style="margin-top:20px; display:flex; gap:10px; justify-content:center;"></div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/products.js' %}"></script>
+{% endblock %}

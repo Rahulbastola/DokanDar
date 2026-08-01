@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}DokanDar{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="products.html"><span class="logo-dot"></span>DokanDar</a>
+    <nav class="site-nav" id="site-nav"></nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    &copy; {% now "Y" %} DokanDar &middot; A multi-vendor marketplace
+  </footer>
+  <div id="toast-container" class="toast-container"></div>
+  <script src="{% static 'js/api.js' %}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

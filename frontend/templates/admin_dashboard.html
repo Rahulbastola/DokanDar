@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Super Admin Dashboard - DokanDar{% endblock %}
+{% block content %}
+<h2>Super Admin Dashboard</h2>
+
+<div class="stats-row" id="stats-row"></div>
+
+<div class="tabs">
+  <button class="active" data-tab="vendors">Pending Vendors</button>
+  <button data-tab="categories">Categories</button>
+  <button data-tab="orders">All Orders</button>
+</div>
+
+<div id="tab-vendors">
+  <div id="pending-vendors-mount"><p class="muted">Loading...</p></div>
+</div>
+
+<div id="tab-categories" style="display:none;">
+  <div class="card" style="max-width:420px; margin-bottom:20px;">
+    <h3>Add Category</h3>
+    <form class="stacked" id="category-form">
+      <label>Name</label>
+      <input type="text" name="name" required>
+      <label>Description</label>
+      <textarea name="description" rows="2"></textarea>
+      <button class="btn" type="submit">Add Category</button>
+    </form>
+  </div>
+  <div id="category-list-mount"></div>
+</div>
+
+<div id="tab-orders" style="display:none;">
+  <div class="filters-bar card">
+    <div class="field">
+      <label>Status</label>
+      <select id="of-status">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="paid">Paid</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="failed">Failed</option>
+      </select>
+    </div>
+    <div class="field"><label>From</label><input type="date" id="of-from"></div>
+    <div class="field"><label>To</label><input type="date" id="of-to"></div>
+    <button class="btn" id="of-apply">Apply</button>
+  </div>
+  <div id="all-orders-mount"><p class="muted">Loading...</p></div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/admin_dashboard.js' %}"></script>
+{% endblock %}

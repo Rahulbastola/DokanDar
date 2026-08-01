@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Vendor Dashboard - DokanDar{% endblock %}
+{% block content %}
+<h2>Vendor Dashboard</h2>
+<div id="pending-banner"></div>
+
+<div class="tabs">
+  <button class="active" data-tab="products">My Products</button>
+  <button data-tab="orders">Orders on My Products</button>
+</div>
+
+<div id="tab-products">
+  <div class="card" style="margin-bottom:24px;">
+    <h3 id="form-title">Add Product</h3>
+    <form class="stacked" id="product-form" enctype="multipart/form-data">
+      <input type="hidden" name="id">
+      <label>Name</label>
+      <input type="text" name="name" required>
+      <label>Description</label>
+      <textarea name="description" rows="3"></textarea>
+      <label>Price</label>
+      <input type="number" name="price" step="0.01" min="0" required>
+      <label>Stock</label>
+      <input type="number" name="stock" min="0" required>
+      <label>Category</label>
+      <select name="category" id="category-select" required></select>
+      <label>Photos</label>
+      <input type="file" name="uploaded_images" multiple accept="image/*">
+      <label style="display:flex; align-items:center; gap:8px; font-weight:normal;">
+        <input type="checkbox" name="is_active" id="is-active-checkbox" checked style="width:auto;">
+        Active (visible to customers)
+      </label>
+      <div style="display:flex; gap:8px;">
+        <button class="btn" type="submit">Save Product</button>
+        <button class="btn secondary" type="button" id="cancel-edit" style="display:none;">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="card" style="overflow-x:auto;">
+    <h3>My Products</h3>
+    <div id="product-list"></div>
+  </div>
+</div>
+
+<div id="tab-orders" style="display:none;">
+  <div id="vendor-orders-mount"><p class="muted">Loading...</p></div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/vendor.js' %}"></script>
+{% endblock %}

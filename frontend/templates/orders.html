@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My Orders - DokanDar{% endblock %}
+{% block content %}
+<h2>My Orders</h2>
+<div id="orders-mount"><p class="muted">Loading...</p></div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/orders.js' %}"></script>
+{% endblock %}

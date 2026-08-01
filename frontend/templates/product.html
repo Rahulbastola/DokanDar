@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Product - DokanDar{% endblock %}
+{% block content %}
+<div class="detail-grid" id="product-detail"><p class="muted">Loading...</p></div>
+
+<div class="card" style="margin-top:32px;">
+  <h3>Reviews</h3>
+  <div id="review-list"></div>
+  <div id="review-form-mount"></div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/product.js' %}"></script>
+{% endblock %}
