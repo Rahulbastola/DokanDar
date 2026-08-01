@@ -68,20 +68,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
-# https://github.com/microsoft/mssql-django
+# https://docs.djangoproject.com/en/5.1/ref/databases/#mysql-notes
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': config('DB_NAME'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT', default=''),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='3306'),
         'USER': config('DB_USER', default=''),
         'PASSWORD': config('DB_PASSWORD', default=''),
         'OPTIONS': {
-            'driver': config('DB_DRIVER', default='ODBC Driver 17 for SQL Server'),
-            'trusted_connection': config('DB_TRUSTED_CONNECTION', default='yes'),
-            'extra_params': config('DB_EXTRA_PARAMS', default='TrustServerCertificate=yes'),
+            'charset': 'utf8mb4',
         },
     }
 }

@@ -5,7 +5,7 @@ DokanDar is a multi-vendor e-commerce marketplace. Independent vendors ("admins"
 ## Tech Stack
 
 - **Backend:** Django 5.1 + Django REST Framework
-- **Database:** Microsoft SQL Server (via `mssql-django` + ODBC Driver 17)
+- **Database:** MySQL (via `mysqlclient`)
 - **Auth:** JWT (`djangorestframework-simplejwt`)
 - **Payments:** eSewa (ePay v2, sandbox/UAT credentials by default)
 - **Frontend:** Vanilla HTML / CSS / JavaScript, served as Django templates + static files, talking to the API via `fetch`
@@ -44,14 +44,16 @@ media/            Uploaded product images (gitignored)
    pip install -r requirements.txt
    ```
 
-2. **Database** — connection settings live in `.env` (not committed). Required keys:
+2. **Database** — create the MySQL database, then set connection settings in `.env` (not committed):
+   ```sql
+   CREATE DATABASE dokandar CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
-   DB_NAME=...
-   DB_HOST=...
-   DB_USER=...
+   ```
+   DB_NAME=dokandar
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=root
    DB_PASSWORD=...
-   DB_TRUSTED_CONNECTION=yes|no
-   DB_DRIVER=ODBC Driver 17 for SQL Server
    ```
    Then apply migrations:
    ```powershell
